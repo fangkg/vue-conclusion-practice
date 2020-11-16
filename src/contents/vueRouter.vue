@@ -8,6 +8,8 @@
         3.1、beforeRouteEnter(to, from, next) 该组件的对应路由被confirm前调用，此时实例还没有被创建，所以不能获取实例this
         3.2、beforeRouteUpdate(to, from, next) 当前路由改变，但该组件被复用时调用，该函数内可以访问组件实例this
         3.3、beforeRouteLeave(to, from, next) 当导航离开组件的对应路由时调用，该函数内可以访问获取到组件实例this
+    4、路由监测变化
+        4.1、监听到路由对象发生变化，从而对路由变化做出响应
 -->
 <template>
   <div>
@@ -61,6 +63,19 @@ export default {
     //     },
     //     beforeRouteLeave(to, from, next) {
     //         // 导航离开该组件的对应路由时调用，可以访问到组件实例this
+    //     }
+    // }
+
+    // 监听到路由对象发生变化，从而对路由变化做出响应
+    // const user = {
+    //     template: `<div></div>`,
+    //     watch: {
+    //         '$route' (to, from) {
+    //             // to 表示跳转到哪，from表示当前路由 两者都是对象，to.path表示跳转到的路由的地址
+    //         },
+    //         '$route.query.id' {
+
+    //         }
     //     }
     // }
 }
