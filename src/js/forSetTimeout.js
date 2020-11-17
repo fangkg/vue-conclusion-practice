@@ -6,15 +6,15 @@ for (var i = 0; i < 10; i ++) {
     })(i)
 }
 
-for (var i = 0; i < 10; i ++) {
-    console.log('i:', i)
+for (var m = 0; m < 10; m ++) {
+    console.log('m:', m)
 }
-console.log('i...', i)
+console.log('m...', m)
 
-for (var i = 1; i <= 5; i++) {
+for (var n = 1; n <= 5; n++) {
     setTimeout(function timer(j) {
         console.log('j...', j)
-    }, 0, i)
+    }, 0, n)
 }
 
 for (let i =0; i < 10; i++) {

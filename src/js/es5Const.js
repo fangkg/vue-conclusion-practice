@@ -11,4 +11,4 @@ function _const(key, value) {
 // 定义obj
 _const('obj', { a: 1 })
 // 重新赋值不生效
-obj = {}
+// obj = {}

@@ -81,7 +81,7 @@ console.log('2' > '5');
 console.log('abc' > 'b');
 
 // 无视规则，自称体系
-console.log(NaN == NaN);
+// console.log(NaN == NaN);
 console.log(undefined == undefined);
 console.log(undefined === undefined);
 console.log(undefined == null);
