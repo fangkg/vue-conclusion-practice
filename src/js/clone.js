@@ -172,3 +172,4 @@ testRes.g = function() {
 
 console.log('g:', testObj.g());
 console.log('r_g:', testRes.g())
+
