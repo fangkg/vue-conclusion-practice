@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import LargeList from './components/LargeList.vue'
+import LargeList from '@/components/LargeList.vue'
 
 export default {
   name: 'App',
