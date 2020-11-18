@@ -28,18 +28,20 @@ class Scheduler {
         return result;
     }
 
-    const timeout = time => {
-        return new Promise(resolve =>{
-            setTimeout(resolve, time);
-        })
-    }
+    // const timeout = time => {
+    //     return new Promise(resolve =>{
+    //         setTimeout(resolve, time);
+    //     })
+    // }
 
-    const scheduler = new Scheduler(2);
-    const addTask = (time, value) => {
-        scheduler.add(() => {
-            return timeout(time).then(() => {
-                console.log(value)
-            })
-        })
-    }
+    // const scheduler = new Scheduler(2);
+    // const addTask = (time, value) => {
+    //     scheduler.add(() => {
+    //         return timeout(time).then(() => {
+    //             console.log(value)
+    //         })
+    //     })
+    // }
 }
+
+new Scheduler()
