@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-19 14:40:33
+ * @LastEditTime: 2020-11-19 15:51:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\js\this.js
+ */
 // this是声明函数时附加的参数，指向特定的对象，也就是隐藏参数。
 // this提供了一种更加优雅的方式来隐式的传递对象应用。
 // this的指向在函数声明的时候是不会被确定的，只有在函数执行的时候才被确定，this最终指向的是调用它的对象。
@@ -15,6 +23,11 @@ function demo() {
 demo();
 // window.demo();
 
+/**
+ * @description: 
+ * @param {*}
+ * @return {*}
+ */
 var obj = {
     user: 'lucy',
     fn: function() {
