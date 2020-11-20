@@ -1,0 +1,34 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-20 14:31:03
+ * @LastEditTime: 2020-11-20 14:35:45
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\ES\index.html
+-->
+<html>
+    <ul>
+        <li>弹出1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</html>
+
+<script>
+    // 始终打印出6
+    var li_list = document.getElementsByTagName('li');
+    for (var i = 0; i <= li_list.length; i ++) {
+        li_list[i].addEventListener('click', function() {
+            console.log(i + 1);
+        }, true)
+    }
+    // 通过闭包解决
+    for (var j = 0; j <= li_list.length; j++) {
+        li_list[j].addEventListener('click', function(j) {
+            return function() {
+                console.log(j + 1);
+            }
+        }(j), true)
+    }
+</script>
