@@ -1,11 +1,14 @@
 /*
  * @Author: fangkg
  * @Date: 2020-11-20 11:53:45
- * @LastEditTime: 2020-11-20 16:07:05
+ * @LastEditTime: 2020-11-20 16:42:52
  * @LastEditors: Please set LastEditors
  * @Description: ES基础知识点
  * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\ES\index.js
  */
+
+
+
 
 // JavaScript是一种弱类型脚本语言，弱类型指的是定义变量时不需要什么类型，在程序运行过程中会自动判断类型。
 // 6中原始类型：Boolean, String, Number, Null, Undefined, Symbol
@@ -349,3 +352,71 @@ class Child extends Parent {
 const ddd = new Child('lucy');
 ddd.smile()
 ddd.laugh()
+
+// Set和Map
+// Set类似于数组，但是数组允许元素重复，Set不允许元素重复
+// Map类似于对象，但普通对象的key必须是字符串或数字，Map的key可以是任何数据类型
+const set = new Set([1, 33, 66, 88]);
+console.log(set);
+// const addSet = new Set();
+[22, 55, 1, 88, 5555, 333, 22, 77].forEach(item => set.add(item));
+console.log('addSet:', set)
+// size：获取元素的数量
+// add(value):添加元素，返回Set实例本身
+// delete（value):删除元素，返回一个布尔值，表示删除时候成功
+// has(value):返回一个布尔值，表示该值是否是Set实例的元素
+// clear()：清除所有元素，没有返回值
+
+const s = new Set();
+console.log(s.add(1).add(3).add(3));
+console.log('size:', s.size)
+console.log(s.has(1))
+console.log(s.delete(1))
+console.log(s.has(1))
+s.clear()
+console.log(s)
+
+const setA = new Set([1, 33, 66, 88]);
+console.log('keys:', setA.keys())
+console.log('values:', setA.values())
+console.log('entries:', setA.entries())
+for(let item of setA.entries()) {
+    console.log('item:', item)
+}
+setA.forEach((value, key) => {
+    console.log(key + ':' + value)
+})
+
+// Map
+const mapS = new Map();
+const objS = {
+    p: 'Hello'
+}
+mapS.set(objS, 'OK');
+console.log('map:', mapS)
+console.log('objS:', mapS.get(objS))
+console.log('has:', mapS.has(objS))
+console.log('delete:', mapS.delete(objS))
+console.log('has:', mapS.has(objS))
+
+// size设置成员的数量
+// set设置成员的key 和 value
+// get 获取成员的属性值
+// has 判断成员是否存在
+// delete删除成员
+// clear 清空所有
+
+const mapT = new Map();
+mapT.set('aaa', 200);
+mapT.set('bbb', 444);
+console.log('T_size:', mapT.size);
+console.log(mapT.get('aaa'))
+console.log(mapT.has('aaa'))
+console.log(mapT.delete('aaa'))
+console.log(mapT.has('aaa'))
+console.log(mapT.clear())
+
+// Promise CommonJS提出的一种规范，可以将回调变成链式调用写法，流程更加清晰，代码更加优雅
+// 三个状态：pending fulfilled rejected
+// 两个过程 pending => fulfilled (resolve);pending => rejected(reject)
+// 一个方法 then
