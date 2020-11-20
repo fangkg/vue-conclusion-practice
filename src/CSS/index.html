@@ -1,0 +1,65 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-20 16:47:29
+ * @LastEditTime: 2020-11-20 18:06:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\CSS\index.html
+-->
+<html>
+    <div style="padding: 10px; border: 5px solid blue; margin: 10px; width: 200px;">
+        CSS属性总结
+    </div>
+    <!-- 文字环绕 -->
+    <!-- <div>
+        <img src="index.jpg" style="float: left;">
+        loat 被设计出来的初衷是用于**文字环绕效果**，即一个图片一段文字，图片`float:left`之后，文字会环绕图片。
+    </div> -->
+    <!-- 清空格 -->
+    <!-- <div style="border: 2px solid blue; padding: 4px;" class="clearfix">
+        <img src="index.jpg" style="float: left">
+        <img src="index.jpg" style="float: left">
+        <img src="index.jpg" style="float: left">
+        <img src="index.jpg" style="float: left">
+    </div> -->
+    <!-- 相对定位relative -->
+    <!-- <div>
+        <p>第一段</p>
+        <p>第二段</p>
+        <p style="position: relative; top: 10px; left: 10px;">第三段</p>
+        <p>第四段</p>
+    </div> -->
+    <!-- 绝对定位 -->
+    <!-- <div>
+        <p>第一段</p>
+        <p>第二段</p>
+        <p style="background: yellow;position: absolute;">第三段</p>
+        <p>第四段</p>
+    </div> -->
+    <!-- flex布局 -->
+    <div class="container">
+        <div class="item">aaa</div>
+        <div class="item" style="flex: 3">bbb</div>
+        <div class="item">ccc</div>
+        <div class="item">ddd</div>
+    </div>
+</html>
+
+<style>
+    .clearfix:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .clearfix {
+        *zoom: 1; /* 兼容 IE 低版本 */
+    }
+    .container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .item {
+        border: 1px solid #000;
+        flex: 1
+    }
+</style>
