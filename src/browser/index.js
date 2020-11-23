@@ -1,7 +1,7 @@
 /*
  * @Author: fangkg
  * @Date: 2020-11-23 11:54:45
- * @LastEditTime: 2020-11-23 12:53:29
+ * @LastEditTime: 2020-11-23 13:42:12
  * @LastEditors: Please set LastEditors
  * @Description: 浏览器工作原理
  * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\browser\index.js
@@ -59,6 +59,9 @@
  // web安全
  // SQL注入 系统登录界面，输入用户名和密码，提交之后，后端直接拿到数据就拼接成SQL语句去查询数据库。如果在输入时进行了恶意SQL拼装，那么最后生成的SQL就会有问题。
  // XSS Cross Site Scripting跨站脚本攻击，黑客通过某种方式将一段特定的JS代码隐蔽的输入进去。然后别人再看这篇文章或者评论的时候，之前注入的这段JS代码就执行了。JS代码一旦执行就不可控制，因为它跟网页原有的JS有同样的权限。例如可以获取server端数据、cookie信息。
- 
+ // XSS危害：页面随意执行别人不安全的JS代码，轻则让页面错乱、功能缺失，重则造成用户信息泄漏。
+ // 预防XSS：对用户输入的内容进行验证和替换。& => &amp;  < => &lt;  > => &gt; "" => &quot; ' => &#x27;  / => &#x2f;  敏感的cookie增加http-only限制，让JS获取不到cookie内容。
+ // CSRF Cross-site request forgery 跨站请求伪造，借用当前操作者的权限来偷偷完成某个操作，而不是拿到用户信息。
+ // 预防CSRF：键入各个层级的权限验证；敏感接口使用post而不是get
 
 
