@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-20 16:47:29
- * @LastEditTime: 2020-11-20 18:06:10
+ * @LastEditTime: 2020-11-23 10:01:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\CSS\index.html
@@ -26,22 +26,25 @@
     <!-- <div>
         <p>第一段</p>
         <p>第二段</p>
-        <p style="position: relative; top: 10px; left: 10px;">第三段</p>
+        <p style="position: relative; top: 10px; left: 10px; background: yellow;">第三段</p>
         <p>第四段</p>
     </div> -->
     <!-- 绝对定位 -->
     <!-- <div>
         <p>第一段</p>
         <p>第二段</p>
-        <p style="background: yellow;position: absolute;">第三段</p>
+        <p style="background: yellow;position: absolute; top: 10px; left: 10px;">第三段</p>
         <p>第四段</p>
     </div> -->
     <!-- flex布局 -->
     <div class="container">
         <div class="item">aaa</div>
-        <div class="item" style="flex: 3">bbb</div>
+        <!-- <div class="item" style="flex: 3">bbb</div> -->
         <div class="item">ccc</div>
         <div class="item">ddd</div>
+    </div>
+    <div class="test_animation">
+
     </div>
 </html>
 
@@ -56,10 +59,48 @@
     }
     .container {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: row;
+        text-align: center;
+        /* position: relative;
+        width: 500px; */
+        /* height: 50px;
+        line-height: 50px; */
+        /* position: relative;
+        height: 200px; */
     }
     .item {
         border: 1px solid #000;
-        flex: 1
+        flex: 1;
+        /* width: 300px;
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        margin: -150px; */
+        /* width: 80px;
+        height: 40px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -20px;
+        margin-left: -40px; */
+        /* transform: translate(-50%, -50%); */
+        /* right: 0;
+        bottom: 0;
+        margin: auto; */
+    }
+    @keyframes testAnimation {
+        0% { background: red; left: 0; top: 0; }
+        25% { background: chartreuse; left: 200px; top: 0; }
+        50% { background: bisque; left: 200px; top: 200px }
+        75% { background: blueviolet; left: 0; top: 300px }
+        100% { background: cornflowerblue; left: 0; top: 0; }
+    }
+    .test_animation {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+
+        animation-name: testAnimation;
+        animation-duration: 5s;
     }
 </style>
