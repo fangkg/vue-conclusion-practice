@@ -1,7 +1,7 @@
 /*
  * @Author: fangkg
  * @Date: 2020-11-20 16:47:38
- * @LastEditTime: 2020-11-23 10:13:14
+ * @LastEditTime: 2020-11-23 15:59:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\CSS\index.js
@@ -29,10 +29,25 @@
 // float导致父元素塌陷，被设置了float的元素会脱离文档流
 // float包裹性，普通div如果没有设置宽度，它会撑满整个屏幕。如果给div增加了float:left之后，它会变得紧凑起来，宽度发生了变化，把内容中的三个字包裹了就是包裹性。为div设置了float之后，其宽度会自动调整为包裹住内容宽度，而不是撑满整个父容器。
 
+// 清除浮动
+// 空div方法<div style="clear: both;"></div>
+// Clearfix方法
+// .clearfix:after {
+//     content: '';
+//     display: table;
+//     clear: both;
+// }
+// .clearfix {
+//     *zoom: 1;
+// }
+// overflow: auto/hidden
+
 // 定位position 用于网页元素的定位，可设置static/relative/absolute/fixed，其中static是默认值
-// 相对定位relative，relative会导致自身位置相对变化，不会影响其它元素的位置、大小；relative产生一个新的定位上下文；
-// 绝对定位absolute，元素脱离了文档结构。导致父元素塌陷。absolute元素是根据最近的定位上下文确定位置。
-// fixed，根据window或者iframe确定位置
+// static：正常文档流定位，此时top,right,bottom,left和z-index属性无效，块级元素从上往下纵向排布；行级元素从左往右排列。
+// 相对定位relative，relative会导致自身位置相对变化，不会影响其它元素的位置、大小；relative产生一个新的定位上下文；相对于正常文档流的位置。
+// 绝对定位absolute，元素脱离了文档结构。导致父元素塌陷。absolute元素是根据最近的定位上下文确定位置。相对于最近的非static定位祖先元素的偏移，来确定元素位置，比如一个绝对定位元素它的父级和祖父级别元素都是relative，它会相对于它的父级而产生偏移。
+// fixed，根据window或者iframe确定位置。指定元素相对于屏幕视口viewport的位置来指定元素位置。元素的位置在屏幕滚动时不会改变，比如那种回到顶部的按钮一般都是用fixed定位方式。
+// sticky：粘性定位
 
 // 定位上下文
 // relative元素的定位永远是相对自身元素位置的，和其它元素没有关系，也不会影响其它元素。
@@ -93,4 +108,59 @@
 // 重绘：当页面中的元素不脱离文档流，而简单地进行样式的变化，比如修改颜色、背景等，浏览器重新绘制样式
 // 回流：指的是处于文档流中DOM的尺寸大小，位置或某些属性发生变化时，导致浏览器重新渲染部分或者全部文档的情况。
 
+// link和@import的区别
+// link属于XHTML标签，@import是CSS提供
+// 页面被加载时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载。
+// import只有IE5以上可用，而link是XHTML标签，无兼容性问题。
+// link方式的样式权重高于@import样式的权重。
+// 使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。
 
+// CSS隐藏元素
+// opacity: 0;将元素的透明度设置为0，看起来隐藏了，但是依然占据空间且可以交互。
+// visibility: hidden; 占据空间，不可以交互。
+// overflow: hidden; 只隐藏元素溢出的部分，占据空间不可以交互
+// display: none; 彻底隐藏元素，元素从文档流中消失，既不占据空间也不交互，也不影响布局。
+// z-index: -9999; 将层级放到底部，这样被覆盖了，看起来隐藏了。
+// transform: scale(0, 0);平面变换，将元素缩放为0，但是依然占据空间，但是不可交互。
+
+// 单位
+// px：绝对单位，页面按精确像素展示。
+// em：相对单位，基准点为父节点字体的大小，如果自身定义了font-size按照自身来计算。浏览器默认字体时16px，整个页面内1em不是一个固定值。
+// rem：相对单位，可理解为root em，相对于根节点html的字体大小来计算。
+
+// 块级元素水平居中
+// margin: 0 auto;
+// flex布局，主流方法
+// table方法
+
+// CSS中z-index属性控制重叠元素的垂直叠加顺序，默认元素的z-index为0，可以修改z-index来控制元素的图层位置，而且z-index只能影响设置了position值的元素。
+
+// 层叠上下文，HTML元素的三维概念，这些HTML元素在一条假象的相对于面向电脑屏幕的视窗或网页的用户的z轴上延伸，HTML元素依据其自身属性按照优先级顺序占用层叠上下文空间。
+
+// CSS sprites，雪碧图也叫CSS精灵，是一种CSS图像合成技术，将小图标合并在一起后的图片称为雪碧图。
+// 好处：减少加载多张图片的HTTP请求数(一张雪碧图只需要一个请求)；提前加载资源；
+// 不足：维护成本高，如果页面背景有少许改动，一般就要改这张合并的图片；加载速度优势在HTTP2开启后就不存在，HTTP2多路复用，多张图片也可以重复利用一个连接通道搞定。
+
+
+// 媒体查询，由一个可选的媒体类型和零个或多个使用媒体功能的限制了样式表范围的表达式组成，例如宽度、高度和颜色。媒体查询，添加自css3，允许内容的呈现针对一个特定范围的输出设备而进行裁剪，而不必改变内容本身，非常适合web网页应对不同型号的设备而做出对应的相应适配。
+
+// 标准盒模型：元素宽度= margin-left + border-left + padding-left + width + padding-right + border-right + margin-right;
+// 怪异盒模型：元素宽度 = border-left + padding-left + content宽度 + padding-right + border-right
+// box-sizing: content-box; 标准盒模型
+// box-sizing: border-box; 怪异盒模型
+
+// BFC Block Formatting Context 一块对立的区域，让处于BFC内部的元素与外部的元素相互隔离。
+// Box: CSS布局的基本单位，Box是CSS布局的对象盒基本单位。
+// Formatting context: 块级上下文格式，页面中的一块渲染区域，有一套渲染规则，决定了其子元素将如何定位，以及和其它元素的关系和相互作用。
+// 作用：防止margin发生重叠；两栏布局，防止文字环绕；防止元素塌陷；
+
+// translate用来改变位置，不用来改变定位
+// translate()是transform的一个值。改变transform或者opacity不会触发浏览器重新布局reflow或重绘repaint，只会触发复合compositions。改变绝对定位会触发重新布局，进而触发重绘和复合。transform使得浏览器为元素创建一个GPU图层，改变绝对定位会使用到GPU。因此translagte()更高效，可以缩短平滑动画的绘制时间。
+
+// 伪类、伪元素
+// 伪类是一个以冒号(:)作为前缀，被添加到一个选择器末尾的关键字，希望样式在特定状态下才被呈现到指定的元素时，可以往元素的选择器后面加上对应的伪类。
+// 伪元素用于创建一些不在文档树中的元素，并为其添加样式。可以通过::before来在一个元素前面增加一些文本，并为这些文本添加样式。虽然可以看到这些文本，但是这些文本实际上不在文档树中。
+
+
+// flex
+// web应用有不同设备尺寸和分辨率，需要响应式界面设计来满足复杂的布局需求，Flex弹性盒模型的优势在于只声明布局应该具有的行为，而不需要给出具体的实现方式，浏览器负责完成实际的布局，当布局涉及到不定宽度，分布对齐的场景时就要有限考虑弹性布局。

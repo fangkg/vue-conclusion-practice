@@ -1,15 +1,15 @@
 <!--
- * @Author: your name
+ * @Author: fangkg
  * @Date: 2020-11-20 16:47:29
- * @LastEditTime: 2020-11-23 10:01:11
+ * @LastEditTime: 2020-11-23 15:37:31
  * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
+ * @Description: CSS示例
  * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\CSS\index.html
 -->
 <html>
-    <div style="padding: 10px; border: 5px solid blue; margin: 10px; width: 200px;">
+    <!-- <div style="padding: 10px; border: 5px solid blue; margin: 10px; width: 200px;">
         CSS属性总结
-    </div>
+    </div> -->
     <!-- 文字环绕 -->
     <!-- <div>
         <img src="index.jpg" style="float: left;">
@@ -37,15 +37,35 @@
         <p>第四段</p>
     </div> -->
     <!-- flex布局 -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="item">aaa</div>
-        <!-- <div class="item" style="flex: 3">bbb</div> -->
+        <div class="item" style="flex: 3">bbb</div>
         <div class="item">ccc</div>
         <div class="item">ddd</div>
-    </div>
-    <div class="test_animation">
+    </div> -->
+    <!-- CSS动画 -->
+    <!-- <div class="test_animation">
 
-    </div>
+    </div> -->
+    <!-- CSS隐藏元素 -->
+    <!-- <div class="hidden_element">
+
+    </div> -->
+    <!-- 块级元素水平居中 margin: 0 auto -->
+    <!-- <div class="block_element_center">
+
+    </div> -->
+    <!-- 块级元素水平居中 flex布局 -->
+    <!-- <div class="block_element_center_flex">
+        <div class="flex-div">1</div>
+        <div class="flex-div">2</div>
+    </div> -->
+    <!-- 块级元素水平居中 table方法 -->
+    <!-- <div class="block_element_center_table">
+        块级元素table水平居中
+    </div> -->
+    <!-- 媒体查询 -->
+    <link rel="stylesheet" media="(max-width: 800px)" href="example.css"/>
 </html>
 
 <style>
@@ -102,5 +122,26 @@
 
         animation-name: testAnimation;
         animation-duration: 5s;
+    }
+    .block_element_center {
+        height: 200px;
+        width: 200px;
+        margin: 0 auto;
+        border: 1px solid red;
+    }
+    .block_element_center_flex {
+        display: flex;
+        justify-content: center;
+        border: 5px solid #743232;
+    }
+    .block_element_center_table {
+        display: table;
+        margin: 0 auto;
+        border: 2px solid #196679
+    }
+    @media (max-width: 600px) {
+        .facet_sidebar {
+            display: none;
+        }
     }
 </style>
