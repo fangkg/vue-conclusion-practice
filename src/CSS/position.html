@@ -1,0 +1,126 @@
+<!--
+ * @Author: fangkg
+ * @Date: 2020-11-26 16:44:46
+ * @LastEditTime: 2020-11-26 17:28:03
+ * @LastEditors: Please set LastEditors
+ * @Description: CSS中的position定位样式，static默认值，表示无定位；absolute表示采用绝对定位的方式，相对于position值不是static的父容器进行定位，该值会使元素脱离了文档流，使用该值后可以用left，right，top，bottom对元素进行移动定位；
+    relative表示相对定位的方式，相对于元素原本的位置进行定位，该值不会使元素脱离文档流，使用该值后用left，right，top，bottom对元素进行移动定位；fixed表示采用固定定位的方式，相对于浏览器窗口进行定位，并且无论滚动条怎么滚动，使用了该值的元素都始终处于固定位置，
+    该值会使元素脱离文档流，使用该值后可以用left，right，top，bottom对元素进行移动定位。
+ * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\CSS\position.html
+-->
+<html>
+    <style>
+        /* 绝对定位absolute */
+        /* .ct {
+            background: red;
+            width: 400px;
+            height: 400px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .a {
+            background: blue;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 20px;
+        } */
+        /* fixed定位 */
+        /* .ct {
+            background: red;
+            width: 400px;
+            height: 4000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .a {
+            background: blue;
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            
+        } */
+        /* relative定位方式 */
+        /* .ct {
+            background: red;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        .a {
+            background: blue;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            left: 2px;
+        } */
+        /* 验证relative元素是否还处于文档流中原本的位置 */
+        /* .ct {
+            background: red;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        .a {
+            background: blue;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            left: 100px;
+            top: 50px;
+        }
+        .b {
+            background: yellow;
+            width: 100px;
+            height: 100px;
+        } */
+        /* 将relative改为absolute对文档流产生的影响 */
+        .ct {
+            background: red;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .a {
+            background: blue;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+        .b {
+            background: yellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <body>
+        <!-- absolute定位，当使a元素的父元素为static后，a元素就相对于<boydy>标签进行定位了，由此验证<body>标签的position值不为static -->
+        <!-- <div class="ct">
+            <div class="a"></div>
+        </div> -->
+
+        <!-- fixed定位，相对于浏览器窗口进行定位，设置了该值的元素始终处于浏览器的固定位置不变，相对于浏览器窗口进行定位。和absolute不同，不需要在父元素上设置position为static之外的值 -->
+        <!-- <div class="ct">
+            <div class="a"></div>
+        </div> -->
+
+        <!-- relative定位，相对于元素本身在文档中应该出现的位置来移动这个元素，可以通过left，right，top，bottom来移动元素的位置，实际上该元素依然占据文档中原有的位置，只是视觉上相对原来的位置有移动 -->
+        <!-- 验证relative定位方式，relative相对于自身进行定位，并不需要在其父元素上添加absolute/relative/fixed -->
+        <!-- <div class="ct">
+            <div class="a"></div>
+        </div> -->
+        <!-- 验证relative是否还处于文档流中原本的位置，a元素使用relative之后，b元素并没有因为a元素从本来位置移开而上移，证明其真正的位置依旧是原本占据的位置，只是其看起来移开了 -->
+        <!-- <div class="ct">
+            <div class="a">a</div>
+            <div class="b">b</div>
+        </div> -->
+        <!-- 上面的例子来验证absolute定位对文档流产生的影响，a元素脱离了文档流，b元素占据了a元素原来的位置 -->
+        <div class="ct">
+            <div class="a">a</div>
+            <div class="b">b</div>
+        </div>
+    </body>
+</html>

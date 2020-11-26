@@ -1,7 +1,7 @@
 /*
  * @Author: fangkg
  * @Date: 2020-11-26 11:34:51
- * @LastEditTime: 2020-11-26 12:47:12
+ * @LastEditTime: 2020-11-26 16:33:00
  * @LastEditors: Please set LastEditors
  * @Description: 开发中遇到的问题
  * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\vue\actualPractice\index.js
@@ -9,11 +9,16 @@
 
 // ***************** ES6 ***************************
 // map和forEach的区别
+// map接收两个参数：callback函数，它会在map执行之后被触发；上下文变量，执行callback函数时this指向的对象；
+// map会返回一个新数组，不等于原数组
+// forEach参数跟map相同，但是没有返回值，返回值为undefined；forEach会修改原来数组；
 
 // eventLoop
 
 // ***************** HTML CSS ***************************
 // flex布局
+
+// position absolute和fixed的区别？
 
 // ***************** vue ***********************************
 
@@ -33,12 +38,43 @@
 // 不同：它们都是Vue对监听器的实现，computed主要用于对同步数据的处理，watch则主要用于观测某个值的变化去完成一段开销较大的复杂业务逻辑。能用computed的时候优先用computed，避免多个数据影响其中某个数据的时候多次调用watch的尴尬情况。
 
 // v-for中的key的作用
+// 使用v-for更新已经渲染的元素列表时，默认用就地复用策略；列表数据修改的时候，会根据key值取判断某个值是否修改，如果修改则重新渲染这一项，否则复用之前的元素；
+// 不推荐使用index作为key，如果是在数组中间插入一条记录，插入点之前的记录会被复用，插入点之后的记录都要重新渲染。
+// 推荐使用数组中不会变化的那一项作为key值，一般为记录id。此时对比发现只有新插入的记录的key属性是变化的，因此只要渲染新插入的这条纪律就可以了。其它的都是复用之前的。
+// 虚拟DOM的Diff算法：两个相同的组件产生类似的DOM结构，不同的组件产生不同的DOM结构；同一层级的一组节点，可以通过唯一的id进行区分。
+// key的作用是为了高效的更新虚拟DOM
+// Vue中在使用相同标签名的元素过渡切换时，也会使用到key属性，目的是为了让Vue可以区分它们
 
 // 什么时候触发组件更新
+// data中数据更新=> Dep中notify() => Watcher中update()
+// data对象：Vue中的data方法中返回的对象
+// Dep对象：每一个Data属性都会创建一个Dep，用来搜集所有使用到这个Data的Watcher对象
+// Watcher对象：用于渲染DOM
+
+// Vue异步更新DOM
+// 在Vue的nextTick回调中才能获取到真正的DOM元素
+// 更新过程：触发Data.set => 调用Dep.notify() => Dep会遍历所有相关的Watcher执行update() => 执行更新操作 => 将当前Watcher添加到异步队列 => 执行异步队列并传入回调(排序，先渲染父节点，再渲染子节点，遍历所有Watcher进行批量更新，更新DOM)
+// Vue在调用Watcher更新视图时，并不会直接进行更新，而是把需要更新的Watcher加入到Queue队列里，然后把具体的更新方法flushSchedulerQueue传给nextTick()
+
+// this.$nextTick()可以获取到更新后的DOM
+// Vue.prototype.$nextTick = function (fn: Function) { return nextTick(fn, this) };
+// this.$nextTick其实就是调用了nextTick方法，在异步队列中执行回调函数。根据先来后到原则，修改Data触发的更新队列会先得到执行，执行完成后就生成了新的DOM，接下来执行this.$nextTick的回调时，能获取到更新后的DOM元素。
+
+// 总结：修改Vue中的Data时，会触发所有和这个Data相关的Watcher进行更新。首先会将所有的Watcher加入队列Queue，然后调用nextTick()执行异步任务，在异步任务的回调中，把Queue中的Watcher进行排序，然后执行对应的DOM更新。
 
 // 组件生命周期
-
-// 数据响应式 watcher通知update更新的时候update()方法里做了什么？
+// Vue实例从创建到销毁的过程
+// 开始创建、初始化数据、编译模板、挂载DOM、渲染、更新、渲染、销毁等一系列过程
+// 钩子
+// beforeCreate：初始化了部分参数，如果有相同的参数，做了参数合并，并执行beforeCreate；实例刚刚被创建，实例初始化之后，数据观测和事件配置之前；
+// created：初始化了Inject、Provide、props、methods、data、computed和watch，执行created；实例创建完成后被立即调用，实例已经完成数据观测、属性、方法运算、watch/event事件回调。挂载还没开始，$el属性目前不可见
+// beforeMount：检查是否存在el属性，存在的话进行渲染dom操作，执行beforeMount；模板编译挂载之前，HTML界面没生成，相关的render函数首次被调用。
+// activated：keep-alive组件激活时调用
+// mounted：实例化Watcher，渲染dom，执行mounted；模板已经挂载完成；
+// beforeUpdate：在渲染dom后，执行了mounted钩子之后，在数据更新的时候执行beforeUpdate
+// updated：检查当前的watcher列表中，是否存在当前要更新的数据watcher，如果存在就执行updated
+// beforeDestroy：检查是否已经被卸载，如果已经被卸载，就直接return出去，否则执行beforeDestroy
+// destroyed：把所有有关自己痕迹的地方都给删除掉
 
 // 组件通信
 
