@@ -1,7 +1,7 @@
 /*
  * @Author: fangkg
  * @Date: 2020-11-27 14:01:24
- * @LastEditTime: 2020-11-27 16:45:12
+ * @LastEditTime: 2020-11-27 16:46:08
  * @LastEditors: Please set LastEditors
  * @Description: 原型模式
  * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\ES\objectPrototype.js
