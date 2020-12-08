@@ -1,7 +1,7 @@
 /*
  * @Author: fangkg
  * @Date: 2020-12-08 10:02:24
- * @LastEditTime: 2020-12-08 11:27:24
+ * @LastEditTime: 2020-12-08 13:59:59
  * @LastEditors: Please set LastEditors
  * @Description: 对象方法
  * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\ES\objEx.js
@@ -233,3 +233,84 @@ Object.defineProperty(Object.prototype, '__proto__', {
 
 
 // 一个对象本身部署了__proto__属性，该属性的值就是对象的原型。
+// Object.setPrototypeOf()方法的作用与__proto__相同，用来设置一个对象的原型对象(prototype)，返回参数对象本身。
+// 格式 Object.setPrototypeOf(object, prototype);
+const pi = Object.setPrototypeOf({}, null);
+console.log('pi:', pi);
+// function setPrototypeOf(obj, proto) {
+//     obj.__proto__ = proto;
+//     return obj;
+// }
+// setPrototypeOf();
+
+// Object.setPrototypeOf() 如果第一个参数不是对象，会自动转为对象。由于返回的还是第一个参数，所以这个操作不会产生任何结果。
+// 由于undefined和null无法转为对象，所以如果在第一个参数是undefined或者null就会报错。
+
+// Object.getPrototypeOf(obj) 读取一个对象的原型对象
+function Rectangle() {}
+const rec = new Rectangle();
+console.log(Object.getPrototypeOf(rec) === Rectangle.prototype);
+Object.setPrototypeOf(rec, Object.prototype);
+console.log(Object.getPrototypeOf(rec) === Rectangle.prototype);
+// 如果参数不是对象会被自动转为对象
+console.log(Object.getPrototypeOf(1) === Number.prototype);
+console.log(Object.getPrototypeOf('foo') === String.prototype);
+console.log(Object.getPrototypeOf(true) === Boolean.prototype);
+// console.log(Object.getPrototypeOf(null));
+// console.log(Object.getPrototypeOf(undefined));
+
+// Object.keys() 返回一个数组，成员是参数对象自身的(不含继承的)所有可遍历(enumerable)属性的键名。
+let { keys, values, entries } = Object;
+let obj = { a: 1, b: 3, c: 5, d: 6 };
+for (let key of keys(obj)) {
+    console.log('key:', key);
+}
+// Object.values() 返回一个数组，成员是参数对象自身的，不含继承的所有可遍历enumerable属性的键值。
+// 属性名为数值的属性，按照数值大小，从小到大遍历。
+// Object.values() 会过滤属性名为Symbol值的属性
+console.log(Object.values({ [Symbol()]: 123, foo: 'dfg' }));
+// Object.values()方法的参数是一个字符串，返回各个字符组成的一个数组
+console.log(Object.values('foo'));
+for (let value of values(obj)) {
+    console.log('value:', value);
+}
+// Object.values() 参数不是对象，先将其转为对象
+console.log(Object.values(33));
+console.log(Object.values(true));
+
+// Object.entries() 返回一个数组，成员是参数对象自身的(不含继承的)所有的可遍历(enumerable)属性的键值对数组
+for (let [key, value] of entries(obj)) {
+    console.log([key, value]);
+}
+console.log(Object.entries({[Symbol()]: 123, foo: 'abd' }));
+
+// Object.entries() 遍历对象的属性
+// 将对象转为真正的Map结构
+const map = new Map(Object.entries({ foo: 'foo', bar: 'bar' }));
+console.log('map:', map);
+
+// Generator函数实现Object.entries()
+function* entriesss(obj) {
+    for (let key of Object.keys(obj)) {
+        yield [key, obj[key]];
+    }
+}
+entriesss({ fff: 'fff', bbb: 'bbb' })
+
+function entriess(obj) {
+    let arr = [];
+    for (let key of Object.keys(obj)) {
+        arr.push([key, obj[key]]);
+    }
+    return arr;
+}
+console.log(entriess({ tt: 'tt', yy: 'yy' }));
+
+// Object.fromEntries() 该方法是Object.entries()的逆操作，用于将一个键值对数组转为对象
+console.log(Object.fromEntries([['tt', 'tt'], ['yy', 45]]));
+
+const eer = new Map([['eeee', 'eeee'], ['ffff', 'ffff']]);
+console.log(Object.fromEntries(eer));
+
+const qtt = new Map().set('foo', true).set('bar', false);
+console.log(Object.fromEntries(qtt));
