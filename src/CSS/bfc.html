@@ -1,0 +1,119 @@
+<!--
+ * @Author: fangkg
+ * @Date: 2020-12-10 10:25:42
+ * @LastEditTime: 2020-12-10 13:28:03
+ * @LastEditors: Please set LastEditors
+ * @Description: BFC(Block Formatting Context格式化上下文) Web页面中盒模型布局的CSS渲染模式，一个独立的渲染区域
+    形成BFC的条件：浮动元素，float除none以外的值；定位元素，position(absolute, fixed)；display为inline-block, table-cell, table-caption；overflow除了visible以外的值(hidden, auto, scroll)
+    BFC特性：内部的Box会在垂直方向上一个接一个的放置；垂直方向上的距离由margin决定；bfc的区域不会与float的元素区域重叠；计算bfc的高度时，浮动元素也参与计算；bfc就是页面上的一个独立容器，容器里面的子元素不会影响外面元素。
+ * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\CSS\bfc.html
+-->
+
+<html>
+    <!-- 1、BFC中的盒子对齐，内部的Box块级元素会在垂直方向上一个接一个的放置 -->
+    <div class="container">
+        <!-- 2、外边距折叠，垂直方向上的距离由margin决定。在常规文档流中，两个兄弟盒子之间的垂直距离是由它们的外边距所决定的，但不是它们的两个外边距之和，而是以较大的为准 -->
+        <!-- <div class="box1"></div>
+        <div class="box2"></div> -->
+        <!-- 让垂直外边距不折叠，BFC就是页面上的一个独立容器，容器里面的子元素不会影响外面元素，同样外面的元素不会影响到BFC内的元素。让box1或者box2再处于另外一个BFC就行 -->
+        <!-- <div class="wrapper">
+            <div class="box3"></div>
+        </div>
+        <div class="box4"></div> -->
+    </div>
+    <div>
+        <!-- 不被浮动元素覆盖 -->
+        <!-- 两栏布局，左边固定宽度，右边不设宽，右边宽度自适应，随着浏览器窗口大小的变化而变化 -->
+        <!-- <div class="column"></div>
+        <div class="column"></div> -->
+    </div>
+    <div>
+        <!-- 三栏布局，左右两边固定宽度，中间不设宽，中间的宽度自适应，随着浏览器的大小变化而变化 -->
+        <!-- <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div> -->
+    </div>
+    <div>
+        <!-- 防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。 -->
+        <div class="left"></div>
+        <p>防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。
+            防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。
+            防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。
+            防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。防止字体环绕，浮动的盒子会遮盖下面的盒子，下面的盒子里的文字不会被遮盖，文字反而还会环绕浮动的盒子。
+        </p>
+    </div>
+    <div>
+        <!-- BFC包含浮动的块，利用overflow: hidden清除浮动，浮动的盒子无法撑出处于标准文档流的父盒子的height -->
+    </div>
+</html>
+
+<style>
+    /* .container {
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    } */
+    /* .box1 {
+        height: 20px;
+        margin: 10px 0;
+        background-color: green;
+    }
+    .box2 {
+        height: 20px;
+        margin: 20px 0;
+        background-color: green;
+    } */
+    /* .wrapper {
+        overflow: hidden;
+    }
+    .box3 {
+        height: 20px;
+        margin: 10px 0;
+        background-color: green;
+    }
+    .box4 {
+        height: 20px;
+        margin: 20px 0;
+        background-color: green;
+    } */
+    .column:nth-of-type(1) {
+        float: left;
+        width: 200px;
+        height: 300px;
+        margin-right: 10px;
+        background-color: red;
+    }
+    .column:nth-of-type(2) {
+        /* 创建bfc */
+        overflow: hidden;
+        height: 300px;
+        background-color: purple;
+    }
+    .col:nth-of-type(1),
+    .col:nth-of-type(2) {
+        float: left;
+        width: 100px;
+        height: 300px;
+        background-color: green;
+    }
+    .col:nth-of-type(2) {
+        float: right;
+    }
+    .col:nth-of-type(3) {
+        overflow: hidden;
+        height: 300px;
+        background-color: red;
+    }
+    .left {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    p {
+        background-color: green;
+        /* 利用BFC防止环绕 */
+        overflow: hidden;
+    }
+</style>

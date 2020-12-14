@@ -1,0 +1,42 @@
+<!--
+ * @Author: fangkg
+ * @Date: 2020-12-10 13:30:34
+ * @LastEditTime: 2020-12-10 13:37:59
+ * @LastEditors: Please set LastEditors
+ * @Description: 登录页面登录框永远保持在页面垂直水平居中的位置。使用两层div，外层使用margin: 0 auto;先做到外层水平居中，然后里面一个div使用绝对定位。
+ * @FilePath: \vue-component-practiced:\KKB\Vue\vue总结\vue-conclusion\vue-conclusion-practice\src\CSS\center.html
+-->
+<html>
+    <body>
+        <div class="login_wrap">
+            <div class="login_box">
+                登录
+            </div>
+        </div>
+    </body>
+</html>
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        min-width: 1200px;
+    }
+    .login_wrap {
+        width: 960px;
+        height: inherit;
+        position: relative;
+        margin: 0 auto;
+        background-color: red;
+    }
+    .login_box {
+        width: 400px;
+        background-color: lawngreen;
+        height: 400px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -200px 0 0 -200px;
+    }
+</style>
